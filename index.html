@@ -19,6 +19,7 @@
             <p>Telegram Bot Developer & Info Specialist</p>
         </div>
         <div class="button-container">
+            <button class="round-button" onclick="openTerminal()">Terminal</button>
         </div>
         <div class="separator"></div>
         <div class="about-section">
@@ -45,6 +46,19 @@
             <img src="github-icon.png" alt="GitHub">
         </a>
     </div>
+
+    <div id="terminal-window" class="terminal-window">
+        <div class="terminal-bar" id="terminal-bar">
+            <span class="terminal-title">Terminal</span>
+            <button class="close-button" onclick="closeTerminal()">X</button>
+        </div>
+        <div class="terminal-content" id="terminal-content">
+            <div id="terminal-output"></div>
+            <input type="text" id="terminal-input" onkeypress="handleKeyPress(event)">
+        </div>
+    </div>
+
+
     <script src="script.js"></script>
 </body>
 </html>
