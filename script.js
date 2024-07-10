@@ -109,7 +109,7 @@ async function processCommand(command, output) {
 
     switch (command.trim()) {
         case 'help':
-            output.innerHTML += `Available commands:\n\n  help,\n  osint_ip [IP],\n  clear,\n  calculate [expression],\n start [notepad],\n  exit\n`;
+            output.innerHTML += `Available commands:\n\n  help,\n  osint_ip [IP],\n  clear,\n  calculate [expression],\n  start [notepad],\n  exit\n`;
             break;
         case 'clear':
             output.innerHTML = '';
