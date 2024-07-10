@@ -108,21 +108,14 @@ async function processCommand(command, output) {
 
     switch (command.trim()) {
         case 'help':
-            output.innerHTML += `Available commands:\n\n  help,\n  clear,\n  echo,\n  exit,\n  calculate [expression],\n  date,\n  osint_ip [IP]\n`;
+            output.innerHTML += `Available commands:\n\n  help,\n  osint_ip [IP],\n  clear,\n  calculate [expression],\n  exit\n`;
             break;
         case 'clear':
             output.innerHTML = '';
-            break;
-        case command.startsWith('echo ') && command:
-            const echoMessage = command.slice(5);
-            output.innerHTML += `${echoMessage}\n\n`;
+            output.innerHTML += `Terminal 2.7.3 Beta\n\nFor more details use "help"\n\n`;
             break;
         case 'exit':
             closeTerminal();
-            break;
-        case 'date':
-            const currentDate = new Date().toLocaleString();
-            output.innerHTML += `${currentDate}\n\n`;
             break;
         default:
             if (command.startsWith('calculate ')) {
@@ -165,7 +158,7 @@ async function processCommand(command, output) {
 
 function showWelcomeMessage() {
     const output = document.getElementById('terminal-output');
-    output.innerHTML += `Terminal 2.7.3 Beta\n\nFor more details use "help"\n`;
+    output.innerHTML += `Terminal 2.7.3 Beta\n\nFor more details use "help"\n\n`;
 }
 
 dragElement(document.getElementById("terminal-window"));
