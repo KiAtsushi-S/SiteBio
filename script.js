@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(typeMessage, 700);
 
-    // Добавляем перемещение для блокнота
     dragElement(document.getElementById("notepad-window"), document.getElementById("notepad-bar"));
 });
 
