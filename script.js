@@ -73,14 +73,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     setTimeout(typeMessage, 700);
+
+    // Добавляем перемещение для блокнота
+    dragElement(document.getElementById("notepad-window"), document.getElementById("notepad-bar"));
 });
 
 function openTerminal() {
     const terminalWindow = document.getElementById('terminal-window');
-        terminalWindow.style.display = 'block';
-        showWelcomeMessage();
-        focusTerminal();
-
+    terminalWindow.style.display = 'block';
+    showWelcomeMessage();
+    focusTerminal();
 }
 
 function closeTerminal() {
@@ -108,7 +110,7 @@ async function processCommand(command, output) {
 
     switch (command.trim()) {
         case 'help':
-            output.innerHTML += `Available commands:\n\n  help,\n  osint_ip [IP],\n  clear,\n  calculate [expression],\n  exit\n`;
+            output.innerHTML += `Available commands:\n\n  help,\n  osint_ip [IP],\n  clear,\n  calculate [expression],\n start [notepad],\n  exit\n`;
             break;
         case 'clear':
             output.innerHTML = '';
@@ -116,6 +118,9 @@ async function processCommand(command, output) {
             break;
         case 'exit':
             closeTerminal();
+            break;
+        case 'start notepad':
+            openNotepad();
             break;
         default:
             if (command.startsWith('calculate ')) {
@@ -155,17 +160,15 @@ async function processCommand(command, output) {
     }
 }
 
-
 function showWelcomeMessage() {
     const output = document.getElementById('terminal-output');
     output.innerHTML += `Terminal 2.7.3 Beta\n\nFor more details use "help"\n\n`;
 }
 
-dragElement(document.getElementById("terminal-window"));
+dragElement(document.getElementById("terminal-window"), document.getElementById("terminal-bar"));
 
-function dragElement(element) {
+function dragElement(element, header) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    const header = document.getElementById(element.id + "bar");
 
     if (header) {
         header.onmousedown = dragMouseDown;
@@ -212,3 +215,22 @@ document.addEventListener('click', function(event) {
         focusTerminal();
     }
 });
+
+function openNotepad() {
+    const notepadWindow = document.getElementById('notepad-window');
+    notepadWindow.style.display = 'block';
+}
+
+function closeNotepad() {
+    const notepadWindow = document.getElementById('notepad-window');
+    notepadWindow.style.display = 'none';
+}
+
+function exportNotepad() {
+    const notepadContent = document.getElementById('notepad-content').value;
+    const blob = new Blob([notepadContent], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'NotepadKiAtsushi.txt';
+    link.click();
+}
