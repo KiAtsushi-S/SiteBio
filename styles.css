@@ -2,12 +2,102 @@ body {
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: #333;     color: #fff;
+    background-color: #333;     
+    color: #fff;
     display: flex;
-    justify-content: center;
+    flex-direction: column; 
     align-items: center;
     height: 100vh;
     overflow: hidden;
+}
+
+.top-bar {
+    width: 100%;
+    background-color: #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.avatar-nick {
+    display: flex;
+    align-items: center;
+    margin-left: 5px; 
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.nick {
+    font-size: 1.2em;
+    font-weight: bold; 
+}
+
+.time {
+    font-size: 1.2em;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+}
+
+
+.buttons {
+    display: flex;
+    margin-right: 20px;
+}
+
+.top-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #555;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px; 
+}
+
+.top-button:hover {
+    background-color: #777;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    margin-top: 20px; 
 }
 
 .loading-screen {
@@ -134,7 +224,7 @@ body {
 .about-section,
 .skills-section {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
 }
 
 .about-section h2,
@@ -157,6 +247,13 @@ body {
     border-radius: 10px;
     font-size: 18px;
     transition: transform 0.3s, background-color 0.3s;
+    text-align: center; 
+}
+
+.skill-block a {
+    color: white; 
+    text-decoration: none;
+    display: block; 
 }
 
 .skill-block:hover {
@@ -164,21 +261,28 @@ body {
     transform: translateY(-10px);
 }
 
+.skill-block:hover a {
+    color: white; 
+}
+
 .social-panel {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #444;
     display: flex;
     justify-content: center;
     padding: 10px;
     gap: 20px;
+    box-shadow: 0px -5px 8px rgba(0, 0, 0, 0.5); 
 }
 
 .social-panel a {
     display: inline-block;
+    color: #ccc;
 }
+
 
 .social-panel img {
     width: 30px;
@@ -343,3 +447,4 @@ body {
 .export-button:hover {
     background-color: #555;
 }
+
