@@ -1,7 +1,3 @@
-function openLink(url) {
-    window.open(url, '_blank');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.getElementById('loading-screen');
     const loadingText = document.getElementById('loading-text');
@@ -74,8 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(typeMessage, 700);
 
+    // Добавляем перемещение для блокнота
     dragElement(document.getElementById("notepad-window"), document.getElementById("notepad-bar"));
+
+    // Обновление времени
+    updateClock();
+    setInterval(updateClock, 10);
 });
+
+function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+    const timeString = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+    document.getElementById('time').textContent = timeString;
+}
 
 function openTerminal() {
     const terminalWindow = document.getElementById('terminal-window');
@@ -109,7 +120,7 @@ async function processCommand(command, output) {
 
     switch (command.trim()) {
         case 'help':
-            output.innerHTML += `Available commands:\n\n  help,\n  osint_ip [IP],\n  clear,\n  calculate [expression],\n  start [notepad],\n  exit\n`;
+            output.innerHTML += `Available commands:\n\n  help,\n  osint_ip [IP],\n  clear,\n  calculate [expression],\n start [notepad],\n  exit\n`;
             break;
         case 'clear':
             output.innerHTML = '';
