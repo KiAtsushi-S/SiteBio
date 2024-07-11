@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="top-bar">
+        <div class="avatar-nick">
+            <img src="avatar.png" alt="Avatar" class="avatar">
+            <span class="nick">KiAtsushi</span>
+        </div>
+        <div class="time" id="time"></div>
+        <div class="buttons">
+            <button class="top-button" onclick="openTerminal()">Terminal</button>
+            <button class="top-button" onclick="openNotepad()">Notepad</button>
+        </div>
+    </div>
     <div class="loading-screen" id="loading-screen">
         <div class="terminal-header">root@Terminal</div>
         <pre class="loading-text" id="loading-text"></pre>
@@ -18,9 +29,6 @@
             <h1>KiAtsushi</h1>
             <p>Telegram Bot Developer & Info Specialist</p>
         </div>
-        <div class="button-container">
-            <button class="round-button" onclick="openTerminal()">Terminal</button>
-        </div>
         <div class="separator"></div>
         <div class="about-section">
             <h2>About Me</h2>
@@ -31,10 +39,10 @@
         <div class="skills-section">
             <h2>Skills</h2>
             <div class="skills-container">
-                <div class="skill-block">HTML</div>
-                <div class="skill-block">CSS</div>
-                <div class="skill-block">Python</div>
-                <div class="skill-block">JavaScript</div>
+                <div class="skill-block"><a href="https://ru.wikipedia.org/wiki/HTML" target="_blank">HTML</a></div>
+                <div class="skill-block"><a href="https://ru.wikipedia.org/wiki/CSS" target="_blank">CSS</a></div>
+                <div class="skill-block"><a href="https://ru.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a></div>
+                <div class="skill-block"><a href="https://ru.wikipedia.org/wiki/Python" target="_blank">Python</a></div>
             </div>
         </div>
     </div>
@@ -46,7 +54,6 @@
             <img src="github-icon.png" alt="GitHub">
         </a>
     </div>
-
     <div id="terminal-window" class="terminal-window">
         <div class="terminal-bar" id="terminal-bar">
             <span class="terminal-title">Terminal</span>
@@ -57,7 +64,6 @@
             <input type="text" id="terminal-input" onkeypress="handleKeyPress(event)">
         </div>
     </div>
-
     <div id="notepad-window" class="notepad-window">
         <div id="notepad-bar" class="notepad-bar">
             <span class="notepad-title">Notepad</span>
@@ -66,7 +72,6 @@
         </div>
         <textarea id="notepad-content" class="notepad-content"></textarea>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
